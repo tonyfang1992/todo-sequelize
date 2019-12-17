@@ -47,6 +47,7 @@ app.post('/users/register', (req, res) => {
 app.get('/users/logout', (req, res) => {
   res.send('logout')
 })
+app.use('/users', require('./routes/user'))
 
 app.listen(port, () => {
   console.log(`App is running on port ${port}`)
