@@ -13,7 +13,7 @@ const db = require('./models')
 const Todo = db.Todo
 const User = db.User
 app.use(session({
-  secret: 'your secret key',
+  secret: 'Iloveyou',
   resave: 'false',
   saveUninitialized: 'false',
 }))
@@ -32,10 +32,9 @@ app.use((req, res, next) => {
 })
 
 //設定路由
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
+app.use('/', require('./routes/home'))
 app.use('/users', require('./routes/user'))
+app.use('/todos', require('./routes/todo'))
 
 
 
