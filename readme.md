@@ -33,7 +33,7 @@ $ npm run dev
 
 ### 網頁功能
 建立專屬的記事功能。
-![image](https://github.com/tonyfang1992/AC_expense_tracker/blob/master/todo-sequelize.png)
+![image](https://github.com/tonyfang1992/todo-sequelize/blob/master/todo-sequelize.png)
 
 ## Authors
 
