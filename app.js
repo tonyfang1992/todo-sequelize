@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
+const flash = require('connect-flash')
 const port = 3000
 const session = require('express-session')
 const passport = require('passport')
@@ -17,7 +18,7 @@ app.use(session({
   resave: 'false',
   saveUninitialized: 'false',
 }))
-
+app.use(flash())
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
@@ -28,7 +29,13 @@ app.use(passport.session())
 require('./config/passport')(passport)
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+
+  // 新增兩個 flash message 變數 
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
+
 })
 
 //設定路由
